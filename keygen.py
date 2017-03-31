@@ -1,5 +1,6 @@
 import hashlib
 import pprint
+import getpass
 
 #Must be based on the image, not constant
 height = 256
@@ -14,7 +15,7 @@ def yield_chunks(block, iterate_size):
 
 
 def get_string_hash():
-    psswd = input("Enter the password: ")
+    psswd = getpass.getpass()
     # Encode the string into a byte array
     psswd_encoded = psswd.encode('utf-8')
     # Generate hash value

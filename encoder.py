@@ -8,7 +8,6 @@ arr = im.load() #pixel data stored in this 2D array
 putpixel = im.im.putpixel
 KEY= generate_tuples()
 (W,H) = im.size
-print(arr)
 
 def efficiency(orig, enco):
 	different = 0
