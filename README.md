@@ -10,7 +10,9 @@ SecureSnaps
 ```
 
 ## Process flow:
-### Agenda for Phase-II [1st April 2017 - 30th April 2017]
+
+### Agenda for Phase-I [23rd Jan 2017 - 15th Feb 2017]
+
 
 * As the skeleton for the encryption process is ready, all that is left is automation through the use of key tuples
 * After this we check the degree of chaos of the algorithm
