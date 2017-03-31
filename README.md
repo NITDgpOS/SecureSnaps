@@ -1,7 +1,7 @@
 # SecureSnaps
 This repo is in its early stages of development.
 
-##Directories:
+## Directories:
 ```
 SecureSnaps
 ---| Enc
@@ -9,8 +9,8 @@ SecureSnaps
 ---| Temp
 ```
 
-##Process flow:
-###Agenda for Phase-I [23rd Jan 2017 - 15th Feb 2017]
+## Process flow:
+### Agenda for Phase-I [23rd Jan 2017 - 15th Feb 2017]
 
 * write a python script which opens an image file (say, filename: file1.jpeg) and then save it as file1_enc.jpeg in 
 the `Enc` directory as file1_enc.jpeg
