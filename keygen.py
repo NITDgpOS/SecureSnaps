@@ -3,8 +3,8 @@ import pprint
 import getpass
 
 #Must be based on the image, not constant
-height = 256
-width = 512
+height = 1
+width = 1
 
 def max_val(ht, wdth):
     return max(ht, wdth)
@@ -23,7 +23,9 @@ def get_string_hash():
     hashvalue = hash_psswd.hexdigest()
     return hashvalue
 
-def generate_tuples():
+def generate_tuples(H,W):
+    height = H
+    width = W
     password_hashed = get_string_hash()
     hash_lst = list(yield_chunks(password_hashed, 4))
     # print (hash_lst)
