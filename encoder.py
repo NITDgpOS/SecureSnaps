@@ -3,10 +3,9 @@ import math
 from keygen import *
 from utils import *
 
-image_path= 'Temp/colors.jpeg'
+image_path= 'Temp/painting.png'
 im = Image.open(image_path, "r")
 arr = im.load() #pixel data stored in this 2D array
-putpixel = im.im.putpixel
 (W,H) = im.size
 degree = int(input())
 print(W,H)
@@ -20,7 +19,7 @@ for i in range(4):
 	automate_swap(first,second,degree+1,im,arr)
 
 # im.show() #To display the image im	
-im.save("Enc/"+image_path[5:-5]+"_en"+".jpeg")
+im.save("Enc/"+image_path[5:-4]+"_en"+".png")
 im2 = Image.open(image_path, "r")
 
 #To calculate efficiency of the algorithm

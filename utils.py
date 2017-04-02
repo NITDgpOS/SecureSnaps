@@ -2,13 +2,15 @@ def function(x):
 	if x%2 is 0:
 		return x+1
 	return x-5
-	#The function is f(x)=x+1
+	
+def function2(x):
+	if x%3 is 0:
+		return x-3
+	return x-7
 
 def swap(ai,aj,bi,bj, image, arr):
 	# Code to swap pixel RGB values
-	temp= arr[ai,aj]
-	arr[ai,aj]= arr[bi,bj]
-	arr[bi,bj]= temp
+	arr[ai,aj],arr[bi,bj]= arr[bi,bj],arr[ai,aj]
 
 def efficiency(orig, enco, W, H):
 	different = 0
