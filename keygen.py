@@ -1,13 +1,14 @@
 import hashlib
-import pprint
 import getpass
 
-#Must be based on the image, not constant
+# Must be based on the image, not constant
 height = 1
 width = 1
 
+
 def max_val(ht, wdth):
     return max(ht, wdth)
+
 
 def yield_chunks(block, iterate_size):
     for i in range(0, len(block), iterate_size):
@@ -23,7 +24,8 @@ def get_string_hash():
     hashvalue = hash_psswd.hexdigest()
     return hashvalue
 
-def generate_tuples(H,W):
+
+def generate_tuples(H, W):
     height = H
     width = W
     password_hashed = get_string_hash()
@@ -32,7 +34,7 @@ def generate_tuples(H,W):
     mod = max_val(height, width)
     finval = []
     # Since we want our values to be less than the height or width of the image
-    finval.append([(int (i, 16))%mod for i in hash_lst])
+    finval.append([(int(i, 16)) % mod for i in hash_lst])
     finval = finval[0]
     keytupl1 = finval[0:4]
     keytupl2 = finval[4:8]
@@ -40,4 +42,3 @@ def generate_tuples(H,W):
     keytupl4 = finval[12:]
 
     return (keytupl1, keytupl2, keytupl3, keytupl4)
-
