@@ -1,15 +1,29 @@
 # SecureSnaps
 
 [![Join the chat at https://gitter.im/SecureSnaps55/Lobby](https://badges.gitter.im/SecureSnaps55/Lobby.svg)](https://gitter.im/SecureSnaps55/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Image encryption and Decryption based on private-key cryptography
 
-## Directories:
-```
-SecureSnaps
----| Enc
----| Dec
----| Temp
-```
+## Algorithm Description
+* Step 1: User enters a password: `password`
+* Step 2: The `password` is encoded in `utf-8` followed by generating a `sha256 hash`
+* Step 3: The `sha256 hash` is converted to `hex`
+* Step 4: This `hex` values are used to generate an array of integer values
+* Step 5: The array is divided into four `key tuples`, each containing 4 integers.
+* Step 6: Each key tuple is used to encode/ decode the image. The number of times, the recursive encryption/decryption takes place for a key tuple is called the degree of the key tuple.
+
+### Encryption using Key tuples
+Let's say we have a key tuple [a, b, c, d] , codec function f(x) and degree = n
+
+|ith degree |Key tuple 								|Process 													|
+|:----------|:-----------------------------------------|:--------------------------------------------------------------|
+|0	|	[a, b, c, d]							|	nothing														|
+|1	|	[f(a), f(b), f(c), f(d)]				|	Swap Pixel f(a),f(b) with Pixel f(c),f(d)				|
+|2	|	[f(f(a)), f(f(b)), f(f(c)), f(f(d))]	|	Swap Pixel f(f(a)),f(f(b)) with Pixel f(f(c)),f(f(d))	|
+|...|	...										|	...															|
+|n 	|	[fn(a), fn(b), fn(c), fn(d)]			|	Swap pixel Pixel fn(a),fn(b) with Pixel fn(c),fn(d)			|
+
+Note: Decryption algorithm is simply the reversal of Encryption process.
 
 ## Documentation
 
@@ -35,17 +49,6 @@ Decodes the image at `image_path` as per the entered password
 * `automate_swap(alpha, beta, N, image, arr)` : swaps pixels automatically for encryption
 * `automate_swap_dec(alpha, beta, N, image, arr)` : swaps pixels automatically for decryption
 
-
-## Plan
-```
-Step 1:		Start SecureSnaps
-Step 2:		Select (Encrypt/Decrypt)
-Step 3:		Input (folder_path, password)
-Step 4:		Encrypts/Decrypts the images in the directory and removes the original images
-Step 5:		End
-
-```
-## Plan for Encryption/Decryption Algorithm
-* Add more cascade functions
-* Increase the tuple size from 4 elements to 8
-* Make the cascade functions non-linear
+## Contribution Guidelines
+Please check the Open issues for the ongoing development in SecureSnaps.
+Also join our Gitter channel for discussion and help on how to get started.
