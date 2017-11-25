@@ -1,8 +1,24 @@
 from PIL import Image
 from keygen import *
 from utils import *
+import argparse
 
-image_path = 'Temp/painting.png'
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--path', help='absolute/relative path to the image file')
+args = parser.parse_args()
+
+image_path = args.path
+if(image_path is None):
+    print ('Please provide the path to image file. Try again.')
+    exit(0)
+	
+try:
+	im = Image.open(image_path, "r")
+except FileNotFoundError:
+	print ('Image path is incorrect. Try again.')
+	exit(0)
+
 im = Image.open(image_path, "r")
 arr = im.load()  # pixel data stored in this 2D array
 (W, H) = im.size
@@ -18,7 +34,7 @@ for i in range(4):
     automate_swap(first, second, degree + 1, im, arr)
 
 # im.show() #To display the image im
-im.save("Enc/" + image_path[5:-4] + "_en" + ".png")
+im.save("Enc/" + image_path.split("/")[-1] + "_en" + ".png")
 im2 = Image.open(image_path, "r")
 
 # To calculate efficiency of the algorithm
