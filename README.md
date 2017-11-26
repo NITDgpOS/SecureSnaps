@@ -57,6 +57,5 @@ Decodes the image at `image_path` as per the entered password
         $ ln -s "$HOME"/<path>/ssnaps /usr/local/bin
         $ ssnaps
 
-## Contribution Guidelines
-Please check the Open issues for the ongoing development in SecureSnaps.
-Also join our Gitter channel for discussion and help on how to get started.
+
+Check the [Contribution Guidelines here](docs/CONTRIBUTING.md)
