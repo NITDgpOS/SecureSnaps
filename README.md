@@ -49,6 +49,14 @@ Decodes the image at `image_path` as per the entered password
 * `automate_swap(alpha, beta, N, image, arr)` : swaps pixels automatically for encryption
 * `automate_swap_dec(alpha, beta, N, image, arr)` : swaps pixels automatically for decryption
 
+## Usage
+
+        $ git clone https://github.com/NITDgpOS/SecureSnaps.git
+        $ cd SecureSnaps
+        $ chmod +x SecureSnaps
+        $ ln -s "$HOME"/<path>/SecureSnaps /usr/local/bin
+        $ SecureSnaps
+
 ## Contribution Guidelines
 Please check the Open issues for the ongoing development in SecureSnaps.
 Also join our Gitter channel for discussion and help on how to get started.
