@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+function _help(){
+	echo "
+	Usage: SecureSnaps [-e] [-d] <file-path>
+
+	Switches:
+		-e : encodes the image at <file-path> as per entered password
+		-d : decodes the image at <file-path> as per entered password
+
+	Commands:
+		<file-path> : absolute/relative path to the image file
+
+	Example:
+		SecureSnaps -e <file-path>
+	"
+}
+
+if [ "$1" == "-e" ]
+then
+	python3 encoder.py --path $2
+elif [ "$1" == "-d" ]
+then
+	python3 decoder.py --path $2
+else
+	_help
+fi
