@@ -1,10 +1,8 @@
-A PR request should consist:
-
-Issue Reference: #.
+Issue Reference: #xx (link to the issue with issue number(#xx) as the anchor text)
 
 Changes proposed:
 -
 -
 -
 
-@mention: people responsible for reviewing the PR
+mention: people responsible for reviewing the PR
