@@ -12,6 +12,7 @@ image_path = args.path
 if(image_path is None):
     print ('Please provide the path to image file. Try again.')
     exit(0)
+extension=image_path.split('.')[-1]
     
 try:
 	im = Image.open(image_path, "r")
@@ -34,7 +35,10 @@ for i in range(4):
     automate_swap_dec(first, second, degree + 1, im, arr)
 
 # im.show() #To display the image im
-im.save("Dec/" + image_path.split("/")[-1] + "_dec" + ".png")
+if extension=="jpeg" or extension==".jpg":
+	im.save("Dec/" + image_path.split("/")[-1] + "_dec." + extension,format='JPEG',subsampling=0,quality=100)
+else:
+	im.save("Dec/" + image_path.split("/")[-1] + "_dec." + extension)
 im2 = Image.open('Temp/painting.png', "r")
 
 # To calculate efficiency of the algorithm

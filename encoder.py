@@ -9,9 +9,11 @@ parser.add_argument('--path', help='absolute/relative path to the image file')
 args = parser.parse_args()
 
 image_path = args.path
+
 if(image_path is None):
     print ('Please provide the path to image file. Try again.')
     exit(0)
+extension=image_path.split('.')[-1]
 	
 try:
 	im = Image.open(image_path, "r")
@@ -34,7 +36,10 @@ for i in range(4):
     automate_swap(first, second, degree + 1, im, arr)
 
 # im.show() #To display the image im
-im.save("Enc/" + image_path.split("/")[-1] + "_en" + ".png")
+if extension=="jpeg" or extension==".jpg":
+	im.save("Enc/" + image_path.split("/")[-1] + "_en." + extension,format='JPEG',subsampling=0,quality=100)
+else:
+	im.save("Enc/" + image_path.split("/")[-1] + "_en." + extension)
 im2 = Image.open(image_path, "r")
 
 # To calculate efficiency of the algorithm
