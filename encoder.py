@@ -36,10 +36,7 @@ for i in range(4):
     automate_swap(first, second, degree + 1, im, arr)
 
 # im.show() #To display the image im
-if extension=="jpeg" or extension==".jpg":
-	im.save("Enc/" + image_path.split("/")[-1] + "_en." + extension,format='JPEG',subsampling=0,quality=100)
-else:
-	im.save("Enc/" + image_path.split("/")[-1] + "_en." + extension)
+im.save("Enc/" + image_path.split("/")[-1] + "_en.png")
 im2 = Image.open(image_path, "r")
 
 # To calculate efficiency of the algorithm
