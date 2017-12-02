@@ -11,6 +11,7 @@ Image encryption and Decryption based on private-key cryptography
 * Step 4: This `hex` values are used to generate an array of integer values
 * Step 5: The array is divided into four `key tuples`, each containing 4 integers.
 * Step 6: Each key tuple is used to encode/ decode the image. The number of times, the recursive encryption/decryption takes place for a key tuple is called the degree of the key tuple.
+* Step 7: Using the key tuples, the color is also encoded using a XOR cipher
 
 ### Encryption using Key tuples
 Let's say we have a key tuple [a, b, c, d] , codec function f(x) and degree = n
@@ -48,6 +49,7 @@ Decodes the image at `image_path` as per the entered password
 * `cascade(xy, N, W, H)` : creates a recursively cascaded list (of length N) of tuples
 * `automate_swap(alpha, beta, N, image, arr)` : swaps pixels automatically for encryption
 * `automate_swap_dec(alpha, beta, N, image, arr)` : swaps pixels automatically for decryption
+* `color(arr, val, W, H)` : Encrypts the color of each pixel against key tuple using XOR operation
 
 ## Usage
 
