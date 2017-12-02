@@ -1,8 +1,8 @@
 def function(x):
 	if x%2 is 0:
 		return x+1
-	return x-5
-	
+	return x-3
+
 def function2(x):
 	if x%3 is 0:
 		return x-3
@@ -11,6 +11,7 @@ def function2(x):
 def swap(ai,aj,bi,bj, image, arr):
 	# Code to swap pixel RGB values
 	arr[ai,aj],arr[bi,bj]= arr[bi,bj],arr[ai,aj]
+
 
 def efficiency(orig, enco, W, H):
 	different = 0
@@ -27,10 +28,15 @@ def cascade(xy, N, W, H):
 	cas.append((xy[0]%W,xy[1]%H))
 	i= 0
 	for i in range(N):
-		xy= (function(xy[0])%W,function(xy[1])%H)
+		xy = (function(xy[0])%W,function(xy[1])%H)
 		cas.append(xy)
 	return cas
 
+def color(arr,val,W,H):
+	for i in range(W):
+		for j in range(H):
+			(r,g,b)=arr[i,j]
+			arr[i,j]=((r^(val[0]%256))%256,(g^(val[1]%256))%256,(b^(val[2]%256))%256)
 
 def automate_swap(alpha, beta, N, image, arr):
 	for i in range(N):
@@ -39,4 +45,3 @@ def automate_swap(alpha, beta, N, image, arr):
 def automate_swap_dec(alpha, beta, N, image, arr):
 	for i in range(N):
 		swap(alpha[N-1-i][0],alpha[N-1-i][1],beta[N-1-i][0],beta[N-1-i][1], image, arr)
-
