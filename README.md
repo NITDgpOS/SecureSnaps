@@ -26,6 +26,29 @@ Let's say we have a key tuple [a, b, c, d] , codec function f(x) and degree = n
 
 Note: Decryption algorithm is simply the reversal of Encryption process.
 
+### Color encryption using XOR
+* Extract 3 values from a key tuple [a, b, c]
+* A single pixel consists of three values - (RED, GREEN, BLUE)
+* Here, we use XOR logical operation between each pixel parameter and key tuple value
+   *  NEW_RED = RED ^ a
+
+   * NEW_GREEN = GREEN ^ b
+
+   * NEW_BLUE = BLUE ^ c,  where ^ is XOR
+
+
+* We replace the old pixel with the newly formed pixel (NEW_RED, NEW_GREEN, NEW_BLUE)
+* XOR has a special property which enables us to trace back the original pixel values without loss of data
+
+   * a^b = c
+
+   * c^b = a
+
+
+*  Here, let `a` be the pixel parameter and `b` be the key tuple value. On XORing it, we obtain `c` and we store it.
+*  For decryption, XORing `c` with key tuple value `b` will give us the original pixel value `a`.
+* Each pixel value ranges from 0 to 255. Hence the modulus of 256 is applied over final results after XORing.
+
 ## Documentation
 
 ### keygen.py
