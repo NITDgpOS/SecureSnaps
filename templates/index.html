@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SecureSnaps</title>
+    </head>
+    <style>
+
+        .button {
+          margin-top: 15px;
+          background-color: #0066FF;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+    </style>
+    <script>
+
+        function onFileSelected(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+            var imgsrc = document.getElementById("uploaded_image");
+
+            imgsrc.title = selectedFile.name;
+
+            reader.onload = function(event) {
+                imgsrc.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+
+    </script>
+    <body>
+        <center>
+        <br \>
+        <br \>
+        <img id="uploaded_image" height="400">
+        <br \>
+        <hr>
+        <br \>
+
+        <form method="POST" action="encrypt" enctype="multipart/form-data">
+            <br \>
+            <input type="file" name="up_pic" onchange="onFileSelected(event)">
+            <br \><br \>
+            Degree: <input type="text" name="degree">
+            <br \><br \>
+            Password: <input type="password" name="pwd">
+            <input type="submit" name="submit" value="enc">
+            <input type="submit" name="submit" value="dec">
+
+        </form>
+
+        </center>
+    </body>
+    </html>
