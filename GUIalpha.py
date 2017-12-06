@@ -12,7 +12,7 @@ def main():
     root=Tk()
     fr1=Frame(root,bg="cyan",bd=16)
     fr1.pack(side=TOP)
-    img=PhotoImage("abc.gif")
+    img=PhotoImage(file="abc.gif")
     Button(fr1,image=img,bd=4,width=80,height=80).pack(side=LEFT)
     Label(fr1,text="Password :",bg="cyan").pack(side=LEFT)
     EnterPswd(fr1)
