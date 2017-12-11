@@ -17,14 +17,14 @@ except ImportError:
     import tkinter.ttk as ttk
     py3 = 1
 
-import test2_support
+import testgui_support
 
 def vp_start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
     top = New_Toplevel_1 (root)
-    test2_support.init(root, top)
+    testgui_support.init(root, top)
     root.mainloop()
 
 w = None
@@ -34,7 +34,7 @@ def create_New_Toplevel_1(root, *args, **kwargs):
     rt = root
     w = Toplevel (root)
     top = New_Toplevel_1 (w)
-    test2_support.init(w, top, *args, **kwargs)
+    testgui_support.init(w, top, *args, **kwargs)
     return (w, top)
 
 def destroy_New_Toplevel_1():
