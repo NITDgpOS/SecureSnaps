@@ -19,6 +19,7 @@
           cursor: pointer;
         }
 
+
     </style>
     <script>
 
@@ -45,19 +46,38 @@
         <br \>
         <hr>
         <br \>
-
-        <form method="POST" action="encrypt" enctype="multipart/form-data">
-            <br \>
-            <input type="file" name="up_pic" onchange="onFileSelected(event)">
+<table border="5" bordercolor="#ff0000" width=450><td>
+  <center>
+        <form method="POST"  action="encrypt" enctype="multipart/form-data">
+            <br \
+              <div class="form-group">
+            <input type="file" name="up_pic" class="form-control" onchange="onFileSelected(event)">
             <br \><br \>
-            Degree: <input type="text" name="degree">
+          </div>
+</td><td>
+            <div class="form-group">
+            Degree: <input type="text" class="form-control" name="degree">
             <br \><br \>
-            Password: <input type="password" name="pwd">
-            <input type="submit" name="submit" value="enc">
-            <input type="submit" name="submit" value="dec">
+          </div>
 
+            <div class="form-group">
+            Password: <input type="password" class="form-control" name="pwd">
+            <br \><br \>
+
+          </div>
+<center>
+            <div class="form-group">
+            <input type="submit" name="submit" class="form-control" value="enc">
+            <br \><br \>
+          </div>
+
+            <div class="form-group">
+            <input type="submit" name="submit" class="form-control" value="dec">
+          </div>
         </form>
-
+      </div>
+    </center>
+    </td></table></center>
         </center>
     </body>
     </html>
