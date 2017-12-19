@@ -74,13 +74,15 @@ Decodes the image at `image_path` as per the entered password
 * `automate_swap_dec(alpha, beta, N, image, arr)` : swaps pixels automatically for decryption
 * `color(arr, val, W, H)` : Encrypts the color of each pixel against key tuple using XOR operation
 
-## Usage
-
-        $ git clone https://github.com/NITDgpOS/SecureSnaps.git
-        $ cd SecureSnaps
-        $ chmod +x ssnaps
-        $ ln -s "$HOME"/<path>/ssnaps /usr/local/bin
-        $ ssnaps
-
+## Installation and Usage
+```
+git clone https://github.com/NITDgpOS/SecureSnaps.git
+cd SecureSnaps
+sudo bash install
+```
+* To encode:
+`ssnaps -e <image_path>`
+* To decode:
+`ssnaps -d <image_path>`
 
 Check the [Contribution Guidelines here](docs/CONTRIBUTING.md)
