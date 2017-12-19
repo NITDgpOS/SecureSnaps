@@ -78,6 +78,8 @@ Decodes the image at `image_path` as per the entered password
 
         $ git clone https://github.com/NITDgpOS/SecureSnaps.git
         $ cd SecureSnaps
+        $ mkdir Enc
+        $ mkdir Dec
         $ chmod +x ssnaps
         $ ln -s "$HOME"/<path>/ssnaps /usr/local/bin
         $ ssnaps
