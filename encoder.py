@@ -56,5 +56,5 @@ if __name__=='__main__':
         exit(0)
     degree = int(input("Enter degree: "))
     pwd = getpass.getpass("Enter password: ")
-    (im,arr)=encode(image_path,degree,pwd)
+    (im,arr,savedpath)=encode(image_path,degree,pwd)
     efficiency_calc(image_path,im,arr)
