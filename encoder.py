@@ -27,10 +27,8 @@ def encode(image_path,degree,pwd):
         automate_swap(first, second, degree + 1, im, arr)
 
     color(arr,KEY[0][0:3],W,H)
-    saved_path="Enc/" + image_path.split("/")[-1] + "_en.png"
-    if "uploads" in image_path:
-        saved_path="uploads/"+saved_path
-        saved_path=saved_path.replace('Enc/','')
+    tokenized= image_path.split('.')
+    saved_path= tokenized[0]+'_enc.'+tokenized[1]
     # im.show() #To display the image im
     im.save(saved_path)
     return (im,arr,saved_path)
@@ -56,5 +54,5 @@ if __name__=='__main__':
         exit(0)
     degree = int(input("Enter degree: "))
     pwd = getpass.getpass("Enter password: ")
-    (im,arr,savedpath)=encode(image_path,degree,pwd)
+    (im,arr,saved_path)=encode(image_path,degree,pwd)
     efficiency_calc(image_path,im,arr)

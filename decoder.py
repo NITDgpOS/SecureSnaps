@@ -27,16 +27,10 @@ def decode(image_path,degree,pwd):
         automate_swap_dec(first, second, degree + 1, im, arr)
 
     color(arr,KEY[0][0:3],W,H)
-    # im.show() #To display the image im
-    if "jpeg"in image_path or "jpg" in image_path:
-        saved_path="Dec/" + image_path.split("/")[-1] + "_dec.jpeg"
-    	im.save(saved_path,format='JPEG',subsampling=0,quality=100)
-    else:
-        saved_path="Dec/" + image_path.split("/")[-1] + "_dec.png"
 
-    if "uploads" in image_path:
-        saved_path="uploads/"+saved_path
-        saved_path=saved_path.replace('Dec/','')
+    tokenized= image_path.split('.')
+    saved_path= tokenized[0]+'_dec.'+tokenized[1]
+    # im.show() #To display the image im
 	im.save(saved_path)
     return (im,arr,saved_path)
 
