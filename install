@@ -1,0 +1,6 @@
+binpath="$(pwd)"
+binpath+="/bin"
+echo "export PATH="\$""PATH:"$binpath" >> ~/.bashrc
+bash
+. ~/.bashrc
+echo "ssnaps command now registered"
