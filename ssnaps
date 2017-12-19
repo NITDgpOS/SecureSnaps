@@ -2,11 +2,12 @@
 
 function _help(){
 	echo "
-	Usage: ssnaps [-e] [-d] <file-path>
+	Usage: ssnaps [-e] [-d] [-s] <file-path>
 
 	Switches:
 		-e : encodes the image at <file-path> as per entered password
 		-d : decodes the image at <file-path> as per entered password
+		-s : shreds the image at <file-path> . Can be used along with -e and -d as -es or -ds
 
 	Commands:
 		<file-path> : absolute/relative path to the image file
@@ -22,6 +23,14 @@ then
 elif [ "$1" == "-d" ]
 then
 	python3 decoder.py --path $2
+elif [ "$1" == "-es" ]
+then
+	python3 encoder.py --path $2
+	python3 shredder.py --path $2
+elif [ "$1" == "-ds" ]
+then
+	python3 decoder.py --path $2
+	python3 shredder.py --path $2
 else
 	_help
 fi
