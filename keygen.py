@@ -15,8 +15,8 @@ def yield_chunks(block, iterate_size):
         yield block[i: i + iterate_size]
 
 
-def get_string_hash():
-    psswd = getpass.getpass()
+def get_string_hash(psswd):
+
     # Encode the string into a byte array
     psswd_encoded = psswd.encode('utf-8')
     # Generate hash value
@@ -25,10 +25,10 @@ def get_string_hash():
     return hashvalue
 
 
-def generate_tuples(H, W):
+def generate_tuples(H, W, pwd):
     height = H
     width = W
-    password_hashed = get_string_hash()
+    password_hashed = get_string_hash(pwd)
     hash_lst = list(yield_chunks(password_hashed, 4))
     # print (hash_lst)
     mod = max_val(height, width)
