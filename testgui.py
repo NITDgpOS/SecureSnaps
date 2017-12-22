@@ -17,7 +17,7 @@ except ImportError:
     import tkinter.ttk as ttk
     py3 = 1
 
-import test2_support
+import testgui_support
 
 def vp_start_gui():
     '''Starting point when module is the main routine.'''
@@ -38,8 +38,8 @@ def create_New_Toplevel_1(root, *args, **kwargs):
     return (w, top)
 
 def destroy_New_Toplevel_1():
-    global w
-    w.destroy()
+    global 
+window    w.destroy()
     w = None
 
 
@@ -54,7 +54,7 @@ class New_Toplevel_1:
         _ana2color = '#d9d9d9' # X11 color: 'gray85' 
 
         top.geometry("600x450+435+167")
-        top.title("New Toplevel 1")
+        top.title("SecureSnaps")
 
 
 
@@ -93,6 +93,7 @@ class New_Toplevel_1:
         self.Button2 = Button(top)
         self.Button2.place(relx=0.68, rely=0.76, height=36, width=67)
         self.Button2.configure(activebackground="#d9d9d9")
+        self.Button2.configure(command=lambda: test2_support.Encrypt(self.Button1,self.Canvas1,self.Canvas2))
         self.Button2.configure(text='''Encrypt''')
         self.Button2.configure(width=67)
 
