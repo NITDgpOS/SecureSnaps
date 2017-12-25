@@ -24,7 +24,7 @@ def vp_start_gui():
     global val, w, root
     root = Tk()
     top = New_Toplevel_1 (root)
-    test2_support.init(root, top)
+    testgui_support.init(root, top)
     root.mainloop()
 
 w = None
@@ -34,12 +34,12 @@ def create_New_Toplevel_1(root, *args, **kwargs):
     rt = root
     w = Toplevel (root)
     top = New_Toplevel_1 (w)
-    test2_support.init(w, top, *args, **kwargs)
+    testgui_support.init(w, top, *args, **kwargs)
     return (w, top)
 
 def destroy_New_Toplevel_1():
-    global 
-window    w.destroy()
+    global w
+    w.destroy()
     w = None
 
 
@@ -54,7 +54,7 @@ class New_Toplevel_1:
         _ana2color = '#d9d9d9' # X11 color: 'gray85' 
 
         top.geometry("600x450+435+167")
-        top.title("SecureSnaps")
+        top.title("New Toplevel 1")
 
 
 
