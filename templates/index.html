@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SecureSnaps</title>
+    </head>
+    <style>
+
+        .button {
+          margin-top: 15px;
+          background-color: #0066FF;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+
+    </style>
+    <script>
+
+        function onFileSelected(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+            var imgsrc = document.getElementById("uploaded_image");
+
+            imgsrc.title = selectedFile.name;
+
+            reader.onload = function(event) {
+                imgsrc.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+
+    </script>
+    <body>
+        <center>
+        <br \>
+        <br \>
+        <img id="uploaded_image" height="400">
+        <br \>
+        <hr>
+        <br \>
+<table border="5" bordercolor="#ff0000" width=450><td>
+  <center>
+        <form method="POST"  action="encrypt" enctype="multipart/form-data">
+            <br \
+              <div class="form-group">
+            <input type="file" name="up_pic" class="form-control" onchange="onFileSelected(event)">
+            <br \><br \>
+          </div>
+</td><td>
+            <div class="form-group">
+            Degree: <input type="text" class="form-control" name="degree">
+            <br \><br \>
+          </div>
+
+            <div class="form-group">
+            Password: <input type="password" class="form-control" name="pwd">
+            <br \><br \>
+
+          </div>
+<center>
+            <div class="form-group">
+            <input type="submit" name="submit" class="form-control" value="enc">
+            <br \><br \>
+          </div>
+
+            <div class="form-group">
+            <input type="submit" name="submit" class="form-control" value="dec">
+          </div>
+        </form>
+      </div>
+    </center>
+    </td></table></center>
+        </center>
+    </body>
+    </html>
