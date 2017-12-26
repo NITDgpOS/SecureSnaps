@@ -93,6 +93,7 @@ class New_Toplevel_1:
         self.Button2 = Button(top)
         self.Button2.place(relx=0.68, rely=0.76, height=36, width=67)
         self.Button2.configure(activebackground="#d9d9d9")
+        self.Button2.configure(command=lambda: test2_support.Encrypt(self.Button1,self.Canvas1,self.Canvas2))
         self.Button2.configure(text='''Encrypt''')
         self.Button2.configure(width=67)
 
