@@ -1,6 +1,3 @@
-from Tkinter import *
-from tkFileDialog import *
-import tkMessageBox
 import os
 import Image 
 import PIL
@@ -131,39 +128,3 @@ def cipher_open():
         filename = askopenfilename()
         file_path_d = os.path.dirname(filename)
         decrypt(filename,password)
-
-class App:
-  def __init__(self, master):
-    global passg
-     title = "Image Encryption"
-    msgtitle = Message(master, text =title)
-    msgtitle.config(font=('helvetica', 17, 'bold'), width=200)
-    canvas_width = 200
-    canvas_height = 50
-    w = Canvas(master, 
-           width=canvas_width,
-           height=canvas_height)
-
-    msgtitle.pack()
-    w.pack()
-    
-    passlabel = Label(master, text="Enter Encrypt/Decrypt Password:")
-    passlabel.pack()
-    passg = Entry(master, show="*", width=20)
-    passg.pack()
-
-    self.encrypt = Button(master, 
-                         text="Encrypt", fg="black", 
-                         command=image_open, width=25,height=5)
-    self.encrypt.pack(side=LEFT)
-    self.decrypt = Button(master,
-                         text="Decrypt", fg="black",
-                         command=cipher_open, width=25,height=5)
-    self.decrypt.pack(side=RIGHT)
-
-
-
-root = Tk()
-root.wm_title("Image Encryption")
-app = App(root)
-root.mainloop()
