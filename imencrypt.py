@@ -5,9 +5,10 @@ import math
 from Crypto.Cipher import AES
 import hashlib
 import binascii
+import getpass
+import hashlib
 
 def encrypt(imagename,password):
-
     plaintext = list()
     plaintextstr = ""
     im = Image.open(imagename)  
@@ -68,9 +69,7 @@ def encrypt(imagename,password):
         
     construct_enc_image()
     
-def decrypt(ciphername,password):
-    
-    
+def decrypt(ciphername,password):  
     cipher = open(ciphername,'r')
     ciphertext = cipher.read()
     
@@ -93,7 +92,21 @@ def decrypt(ciphername,password):
     newim = Image.new("RGB", (int(newwidth), int(newheight)))
     newim.putdata(finaltexttwo)
     newim.show()
-   
-password= "aniqaniqaniqaniq"
-encrypt("1.png", password)
-decrypt("1.png.crypt", password)
+
+def encode(filename)
+    pwd = getpass.getpass("Enter password: ")
+    pwd= hashlib.sha256(pwd.encode('utf-8')).hexdigest()
+    try:
+        encrypt(filename, pwd)
+        print('Encrypted successfully')
+    except:
+        print("Could not encrypt.")
+
+def decode(filename)
+    pwd = getpass.getpass("Enter password: ")
+    pwd= hashlib.sha256(pwd.encode('utf-8')).hexdigest()
+    try:
+        decrypt(filename+".crypt", pwd)
+        print('Decrypted successfully')
+    except:
+        print("Incorrect password.")
