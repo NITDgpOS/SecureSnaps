@@ -93,18 +93,20 @@ def decrypt(ciphername,password):
     newim.putdata(finaltexttwo)
     newim.show()
 
-def encode(filename)
+def encode(filename):
     pwd = getpass.getpass("Enter password: ")
     pwd= hashlib.sha256(pwd.encode('utf-8')).hexdigest()
+    pwd=pwd[0:32]
     try:
         encrypt(filename, pwd)
         print('Encrypted successfully')
     except:
         print("Could not encrypt.")
 
-def decode(filename)
+def decode(filename):
     pwd = getpass.getpass("Enter password: ")
     pwd= hashlib.sha256(pwd.encode('utf-8')).hexdigest()
+    pwd=pwd[0:32]
     try:
         decrypt(filename+".crypt", pwd)
         print('Decrypted successfully')
