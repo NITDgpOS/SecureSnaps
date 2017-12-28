@@ -1,3 +1,4 @@
+mkdir uploads
 binpath="$(pwd)"
 binpath+="/bin"
 echo "export PATH="\$""PATH:"$binpath" >> ~/.bashrc

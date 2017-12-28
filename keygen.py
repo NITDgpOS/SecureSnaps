@@ -1,29 +1,20 @@
 import hashlib
 import getpass
 
-# Must be based on the image, not constant
-height = 1
-width = 1
-
-
 def max_val(ht, wdth):
     return max(ht, wdth)
-
 
 def yield_chunks(block, iterate_size):
     for i in range(0, len(block), iterate_size):
         yield block[i: i + iterate_size]
 
-
 def get_string_hash(psswd):
-
     # Encode the string into a byte array
     psswd_encoded = psswd.encode('utf-8')
     # Generate hash value
     hash_psswd = hashlib.sha256(psswd_encoded)
     hashvalue = hash_psswd.hexdigest()
     return hashvalue
-
 
 def generate_tuples(H, W, pwd):
     height = H

@@ -499,36 +499,27 @@ if __name__ == '__main__':
     
     if 1:
        
-        key = raw_input ("enter key")
-        ot  = raw_input('Enter text') # ot = original text
-        print '      ot', ot
-        print
+        
+        ot  = raw_input('Enter password:  ') # ot = original text
+        a = len(ot)
+        key = ot[0:int(0.42*a)]
+        print '      Original Text:  ', ot
+        print '      Key :   ', key
         
         # encrypt
-        bf = Blowfish(key)              # nonce defaults to date-time
+        bf = Blowfish(key)              
         ct = bf.CTR_final(ot)           # ct = ciphertext
         counter0 = bf.get_counter0()
-        print '     ctr', counter0.encode('hex'), len(counter0)
-        print '      ct', indent_lines(ct.encode('hex'), 9), len(ct)
-        print
         
-        # decrypt #1
+        print '      Cipher Text:   ', indent_lines(ct.encode('hex'), 9)
+        print '     Length of text:     ', len(ct)
+        
+        # decrypt 
         bf = Blowfish(key, counter0)
         # process all data in a single call
         pt1 = bf.CTR_final(ct)          # pt = plaintext
-        print '     pt1', pt1
+        print '     Decrypted text:   ', pt1
         
-        # decrypt #2
-        # data is split over multiple calls
-        # note: bf can be reused since only key setup affects
-        #       P and S, but we do need to reset the counter
-        bf.set_counter(counter0)
-        pt2 =  bf.CTR_update(ct[:10])
-        pt2 += bf.CTR_update(ct[10:-16])
-        pt2 += bf.CTR_final(ct[-16:])
-        print '     pt2', pt2
-        print
-        print
         
 
 # --------------------------------------------------------------

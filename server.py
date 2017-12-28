@@ -50,9 +50,9 @@ def encrypt():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         links = [str(os.path.join(app.config['UPLOAD_FOLDER'], filename))]
         if request.form['submit']=="enc":
-            (im,arr,path)=enc.encode(links[0],degree,pwd)
+            (im,arr,path)=enc.encode(links[0], pwd)
         else:
-            (im,arr,path)=dec.decode(links[0],degree,pwd)
+            (im,arr,path)=dec.decode(links[0], pwd)
         links.append(path)
         return render_template("display.html",link=links)
 
