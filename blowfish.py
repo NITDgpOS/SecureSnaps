@@ -491,41 +491,20 @@ def indent_lines(s, indent=7, width=64):
         s = s[width:]
     return ''.join(si)
 
-if __name__ == '__main__':
-    
- 
-    
-    
-    if 1:
-       
-        key = raw_input ("enter key")
-        ot  = raw_input('Enter text') # ot = original text
-        print '      ot', ot
-        print
-        
-        # encrypt
-        bf = Blowfish(key)              # nonce defaults to date-time
-        ct = bf.CTR_final(ot)           # ct = ciphertext
-        counter0 = bf.get_counter0()
-        print '     ctr', counter0.encode('hex'), len(counter0)
-        print '      ct', indent_lines(ct.encode('hex'), 9), len(ct)
-        print
-        
-        # decrypt #1
-        bf = Blowfish(key, counter0)
-        # process all data in a single call
-        pt1 = bf.CTR_final(ct)          # pt = plaintext
-        print '     pt1', pt1
-        
-        # decrypt #2
-        # data is split over multiple calls
-        # note: bf can be reused since only key setup affects
-        #       P and S, but we do need to reset the counter
-        bf.set_counter(counter0)
-        pt2 =  bf.CTR_update(ct[:10])
-        pt2 += bf.CTR_update(ct[10:-16])
-        pt2 += bf.CTR_final(ct[-16:])
-        print '     pt2', pt2
-        print
-        print
-        
+# Driver functions
+
+def enc_text(plaintext, pwd):
+    bf = Blowfish(pwd)                   # nonce defaults to date-time
+    ct = bf.CTR_final(plaintext)         # ct = ciphertext
+    counter0 = bf.get_counter0()
+    ct.encode('hex')
+    print(ct)
+    return ct
+
+def dec_text(ciphertext, pwd):
+    bf = Blowfish(pwd)
+    counter0 = bf.get_counter0()
+    bf = Blowfish(pwd, counter0)
+    pt = bf.CTR_final(ciphertext)        # pt = plaintext
+    print(pt)
+    return pt
