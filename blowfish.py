@@ -498,7 +498,7 @@ def enc_text(plaintext, pwd):
     ct = bf.CTR_final(plaintext)         # ct = ciphertext
     counter0 = bf.get_counter0()
     ct.encode('hex')
-    print(ct)
+    # print(ct)
     return ct
 
 def dec_text(ciphertext, pwd):
@@ -506,5 +506,5 @@ def dec_text(ciphertext, pwd):
     counter0 = bf.get_counter0()
     bf = Blowfish(pwd, counter0)
     pt = bf.CTR_final(ciphertext)        # pt = plaintext
-    print(pt)
+    # print(pt)
     return pt
