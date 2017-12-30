@@ -19,7 +19,6 @@ def encrypt(imagename,password):
     img = Image.open( imagename )
     img.load()
     data = np.asarray( img, dtype="int32" )
-    print(data)
     H, W = len(data), len(data[0])
     print(H)
     print(W)
@@ -55,7 +54,10 @@ def decrypt(ciphername,password):
             data[i,j]= pixelstring[c], pixelstring[c+1], pixelstring[c+2]
             c=c+3
 
-    print(data)
+    img = Image.fromarray(data, 'RGB')
+    x= ciphername.split('.')
+    img.save(x[0]+'_dec.'+x[-2])
+    img.show()
 
 def encode(filename):
     pwd = getpass.getpass("Enter password: ")
@@ -67,8 +69,10 @@ def encode(filename):
 
 def decode(filename):
     pwd = getpass.getpass("Enter password: ")
-    try:
-        decrypt(filename+".crypt", pwd)
-        print('Decrypted successfully')
-    except:
-        print("Incorrect password.")
+    decrypt(filename+".crypt", pwd)
+    
+    # try:
+    #     decrypt(filename+".crypt", pwd)
+    #     print('Decrypted successfully')
+    # except:
+    #     print("Incorrect password.")
