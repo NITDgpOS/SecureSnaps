@@ -1,13 +1,19 @@
-import os
 from PIL import Image 
 import PIL
-import math
-import hashlib
-import binascii
 import getpass
-import hashlib
-from blowfish import *
+from Crypto.Cipher import Blowfish
 import numpy as np
+
+
+def pad_string(str):
+    new_str = str
+    pad_chars = 8 - (len(str) % 8)
+
+    if pad_chars != 0:
+        for x in range(pad_chars):
+            new_str += " "
+        
+    return new_str
 
 def encrypt(imagename,password):
     img = Image.open( imagename )
@@ -23,18 +29,20 @@ def encrypt(imagename,password):
             for i in p:
                 pixelstring= pixelstring + str(100+i)
     pixelstring= pixelstring+','+str(H)+','+str(W)
+    
+    crypt_obj = Blowfish.new(password, Blowfish.MODE_ECB)
+    ciphertext = crypt_obj.encrypt(pad_string(pixelstring))
 
-    pixelstring= enc_text(pixelstring, password)
-
-    cipher= open(imagename.split('.')[0], 'w')
-    cipher.write(pixelstring)
-    # return pixelstring
+    cipher= open(imagename+'.crypt', 'w')
+    cipher.write(ciphertext)
     
 def decrypt(ciphername,password):  
     cipher= open(ciphername, 'r')
     ciphertext= cipher.read()
-    
-    pixelstring= dec_text(ciphertext, password)
+
+    crypt_obj = Blowfish.new(password, Blowfish.MODE_ECB)
+    pixelstring= crypt_obj.decrypt(ciphertext)
+
     x= pixelstring.split(',')
     H,W= int(x[-2]),int(x[-1])
     pixelstring= x[0]
@@ -51,18 +59,16 @@ def decrypt(ciphername,password):
 
 def encode(filename):
     pwd = getpass.getpass("Enter password: ")
-    print(encrypt(filename, pwd))
-    # try:
-    #     encrypt(filename, pwd)
-    #     print('Encrypted successfully')
-    # except:
-    #     print("Could not encrypt.")
+    try:
+        encrypt(filename, pwd)
+        print('Encrypted successfully')
+    except:
+        print("Could not encrypt.")
 
 def decode(filename):
     pwd = getpass.getpass("Enter password: ")
-    decrypt(filename.split('.')[0], pwd)
-    # try:
-    #     decrypt(filename+".crypt", pwd)
-    #     print('Decrypted successfully')
-    # except:
-    #     print("Incorrect password.")
+    try:
+        decrypt(filename+".crypt", pwd)
+        print('Decrypted successfully')
+    except:
+        print("Incorrect password.")
