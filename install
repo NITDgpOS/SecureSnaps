@@ -2,6 +2,7 @@ mkdir uploads
 binpath="$(pwd)"
 binpath+="/bin"
 echo "export PATH="\$""PATH:"$binpath" >> ~/.bashrc
+chmod a+x ~/.bashrc
 bash
 . ~/.bashrc
 echo "ssnaps command now registered"
